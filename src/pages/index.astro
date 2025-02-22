@@ -1,0 +1,16 @@
+---
+import Hero from "@components/Hero.astro";
+import Welcome from "@components/Welcome.astro";
+import Layout from "@layouts/Layout.astro";
+import { useTranslation } from "@i18n/utils";
+import { getLocale } from "astro-i18n-aut";
+
+const locale = getLocale(Astro.url);
+const { t } = useTranslation(locale);
+---
+
+<Layout>
+  <div>{t("nested.nested_test")} asdasdasd</div>
+  <Hero />
+  <Welcome />
+</Layout>

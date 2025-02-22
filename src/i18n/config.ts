@@ -1,6 +1,6 @@
-export const languages = {
-  en: "English",
-  lt: "Lithuanian",
-};
+export type Locales = "en" | "lt";
 
-export const defaultLang = "en";
+export const i18nConfig = {
+  locales: { en: "en-US", lt: "lt-LT" },
+  defaultLocale: "en",
+};
