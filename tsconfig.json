@@ -3,16 +3,17 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@lib/*": ["src/lib/*"],
       "@assets/*": ["src/assets/*"],
-      "@types/*": ["src/types/*"],
+      "@components/*": ["src/components/*"],
+      "@i18n/*": ["src/i18n/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@lib/*": ["src/lib/*"],
+      "@pages/*": ["src/pages/*"],
       "@services/*": ["src/services/*"],
-      "@i18n/*": ["src/i18n/*"]
+      "@styles/*": ["src/styles/*"],
+      "@@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"],
+      "@views/*": ["src/views/*"]
     },
     "plugins": [
       {

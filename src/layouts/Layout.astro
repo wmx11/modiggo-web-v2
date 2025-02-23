@@ -2,18 +2,27 @@
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import { getLocale } from "astro-i18n-aut";
+import Meta from "@components/_seo/Meta.astro";
+import Favicon from "@components/_seo/Meta.astro";
+import type { SeoProps } from "@@types/seo";
+
+interface Props extends SeoProps {}
+
+const props = Astro.props;
 
 const locale = getLocale(Astro.url);
 ---
 
 <!doctype html>
-<html lang={locale || "en"}>
+<html lang={locale || "en"} data-theme="dark">
   <head>
+    <!-- Character Set -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Modiggo</title>
+    <Meta {...props} />
+    <Favicon />
   </head>
   <body>
     <slot />

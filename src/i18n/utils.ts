@@ -1,6 +1,6 @@
 import type { Locales } from "./config";
-import en from "./en";
-import lt from "./lt";
+import en from "./messages/en";
+import lt from "./messages/lt";
 import { i18nConfig } from "./config";
 
 export const translations = {

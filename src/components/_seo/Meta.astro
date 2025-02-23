@@ -1,0 +1,95 @@
+---
+import type { SeoProps } from "@@types/seo";
+import seoConfig from "./seoConfig";
+
+interface Props extends SeoProps {}
+
+const {
+  title = seoConfig.title,
+  description = seoConfig.description,
+  keywords = [],
+  url = seoConfig.url,
+  imageUrl,
+  type = "website",
+  author,
+  twitterHandle,
+  themeColor = "#ffffff",
+  canonicalUrl,
+  language = "English",
+  noIndex = false,
+  companyName,
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Keywords -->
+{keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalUrl || url} />
+
+<!-- Language -->
+<meta name="language" content={language} />
+
+<!-- Author and Copyright -->
+{author && <meta name="author" content={author} />}
+{
+  companyName && (
+    <meta
+      name="copyright"
+      content={`Copyright ©${currentYear} ${companyName}`}
+    />
+  )
+}
+
+<!-- Robots -->
+<meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+
+<meta
+  name="googlebot"
+  content={noIndex ? "noindex, nofollow" : "index, follow"}
+/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{imageUrl && <meta property="og:image" content={imageUrl} />}
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+{imageUrl && <meta property="twitter:image" content={imageUrl} />}
+{
+  twitterHandle && (
+    <>
+      <meta property="twitter:site" content={twitterHandle} />
+      <meta property="twitter:creator" content={twitterHandle} />
+    </>
+  )
+}
+
+<!-- Theme Color -->
+<meta name="theme-color" content={themeColor} />
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://analytics.google.com" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- DNS Prefetch -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
